@@ -100,12 +100,11 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             duration: const Duration(milliseconds: 1000),
             child: ElevatedButton(
               style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStatePropertyAll(AppColors.blueColor),
-                  minimumSize: MaterialStatePropertyAll(
+                  backgroundColor: WidgetStatePropertyAll(AppColors.blueColor),
+                  minimumSize: WidgetStatePropertyAll(
                     Size(300, 55),
                   ),
-                  shape: MaterialStatePropertyAll(
+                  shape: WidgetStatePropertyAll(
                     RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),

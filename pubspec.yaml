@@ -39,6 +39,7 @@ dependencies:
   flutter_screenutil: ^5.9.0
   get: ^4.6.6
   shared_preferences: ^2.2.2
+  percent_indicator: 
 
 dev_dependencies:
   flutter_test:

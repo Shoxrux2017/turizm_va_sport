@@ -27,104 +27,104 @@ class _HomepageState extends State<Homepage> {
   String selectedHeightUnit = 'cm';
   String selectedWeightUnit = 'lbs';
 
-  double calculateBMI() {
-    double height;
-    double weight;
+  // double calculateBMI() {
+  //   double height;
+  //   double weight;
 
-    if (selectedHeightUnit == 'cm') {
-      height = double.tryParse(_cmHeightController.text) ?? 0;
-    } else {
-      // Convert feet and inches to cm
-      double feet = double.tryParse(_ftHeightController.text) ?? 0;
-      double inches = double.tryParse(_inHeightController.text) ?? 0;
-      height = (feet * 30.48) + (inches * 2.54);
-    }
+  //   if (selectedHeightUnit == 'cm') {
+  //     height = double.tryParse(_cmHeightController.text) ?? 0;
+  //   } else {
+  //     // Convert feet and inches to cm
+  //     double feet = double.tryParse(_ftHeightController.text) ?? 0;
+  //     double inches = double.tryParse(_inHeightController.text) ?? 0;
+  //     height = (feet * 30.48) + (inches * 2.54);
+  //   }
 
-    if (selectedWeightUnit == 'lbs') {
-      // Convert pounds to kilograms
-      var w = (double.tryParse(_lbsWeightController.text) ?? 0 * 0.453592);
-      weight = (w * 0.453592);
-    } else {
-      weight = double.tryParse(_kgsWeightController.text) ?? 0;
-    }
+  //   if (selectedWeightUnit == 'lbs') {
+  //     // Convert pounds to kilograms
+  //     var w = (double.tryParse(_lbsWeightController.text) ?? 0 * 0.453592);
+  //     weight = (w * 0.453592);
+  //   } else {
+  //     weight = double.tryParse(_kgsWeightController.text) ?? 0;
+  //   }
 
-    // BMI calculation formula: BMI = weight (kg) / (height (m))^2
-    return weight / ((height / 100) * (height / 100));
-  }
+  //   // BMI calculation formula: BMI = weight (kg) / (height (m))^2
+  //   return weight / ((height / 100) * (height / 100));
+  // }
 
-  void onPressedCheckHealth(String gender, String age, String height,
-      String weight, String heightUnit, String weightUnit) {
-    // Validate gender
-    if (selectedGender == 'notselected') {
-      showValidationError('Gender not selected');
-      return;
-    }
-    // Validate age
-    double parsedAge = double.tryParse(age) ?? 0;
-    if (parsedAge < 3 || parsedAge > 100) {
-      showValidationError('Invalid Age');
-      return;
-    }
+  // void onPressedCheckHealth(String gender, String age, String height,
+  //     String weight, String heightUnit, String weightUnit) {
+  //   // Validate gender
+  //   if (selectedGender == 'notselected') {
+  //     showValidationError('Gender not selected');
+  //     return;
+  //   }
+  //   // Validate age
+  //   double parsedAge = double.tryParse(age) ?? 0;
+  //   if (parsedAge < 3 || parsedAge > 100) {
+  //     showValidationError('Invalid Age');
+  //     return;
+  //   }
 
-    // Validate height
-    double parsedHeight;
-    if (selectedHeightUnit == 'cm') {
-      parsedHeight = double.tryParse(_cmHeightController.text) ?? 0;
-    } else {
-      double feet = double.tryParse(_ftHeightController.text) ?? 0;
-      double inches = double.tryParse(_inHeightController.text) ?? 0;
-      if (feet < 0 || inches < 0) {
-        showValidationError('Invalid Height');
-        return;
-      }
-      parsedHeight = (feet * 30.48) + (inches * 2.54);
-    }
+  //   // Validate height
+  //   double parsedHeight;
+  //   if (selectedHeightUnit == 'cm') {
+  //     parsedHeight = double.tryParse(_cmHeightController.text) ?? 0;
+  //   } else {
+  //     double feet = double.tryParse(_ftHeightController.text) ?? 0;
+  //     double inches = double.tryParse(_inHeightController.text) ?? 0;
+  //     if (feet < 0 || inches < 0) {
+  //       showValidationError('Invalid Height');
+  //       return;
+  //     }
+  //     parsedHeight = (feet * 30.48) + (inches * 2.54);
+  //   }
 
-    if (parsedHeight <= 0) {
-      showValidationError('Invalid Height');
-      return;
-    }
+  //   if (parsedHeight <= 0) {
+  //     showValidationError('Invalid Height');
+  //     return;
+  //   }
 
-    // Validate weight
-    double parsedWeight;
-    if (selectedWeightUnit == 'lbs') {
-      parsedWeight = double.tryParse(_lbsWeightController.text) ?? 0;
-    } else {
-      parsedWeight = double.tryParse(_kgsWeightController.text) ?? 0;
-    }
+  //   // Validate weight
+  //   double parsedWeight;
+  //   if (selectedWeightUnit == 'lbs') {
+  //     parsedWeight = double.tryParse(_lbsWeightController.text) ?? 0;
+  //   } else {
+  //     parsedWeight = double.tryParse(_kgsWeightController.text) ?? 0;
+  //   }
 
-    if (parsedWeight <= 0) {
-      showValidationError('Invalid Weight');
-      return;
-    }
+  //   if (parsedWeight <= 0) {
+  //     showValidationError('Invalid Weight');
+  //     return;
+  //   }
 
-    if (_ageController.text.isEmpty ||
-        (_cmHeightController.text.isEmpty &&
-            (_ftHeightController.text.isEmpty ||
-                _inHeightController.text.isEmpty)) ||
-        ((_lbsWeightController.text.isEmpty && selectedWeightUnit == 'lbs') ||
-            (_kgsWeightController.text.isEmpty &&
-                selectedWeightUnit == 'kgs'))) {
-      // Handle case where any required field is empty
-      showValidationError('Incomplete height or weight');
-      return;
-    }
+  //   if (_ageController.text.isEmpty ||
+  //       (_cmHeightController.text.isEmpty &&
+  //           (_ftHeightController.text.isEmpty ||
+  //               _inHeightController.text.isEmpty)) ||
+  //       ((_lbsWeightController.text.isEmpty && selectedWeightUnit == 'lbs') ||
+  //           (_kgsWeightController.text.isEmpty &&
+  //               selectedWeightUnit == 'kgs'))) {
+  //     // Handle case where any required field is empty
+  //     showValidationError('Incomplete height or weight');
+  //     return;
+  //   }
 
-    double bmi = calculateBMI();
+  //   double bmi = calculateBMI();
 
-    // Now you can use the BMI value as needed, for example, display it in a dialog
-    Get.to(
-      () => Results(
-        bmi: bmi,
-        gender: gender,
-        age: parsedAge,
-        height: height,
-        weight: weight,
-        heightUnit: heightUnit,
-        weightUnit: weightUnit,
-      ),
-    );
-  }
+  //   // Now you can use the BMI value as needed, for example, display it in a dialog
+  //   Get.to(
+  //     () => Results(
+  //       bmi: bmi,
+  //       gender: gender,
+  //       age: parsedAge,
+  //       height: height,
+  //       weight: weight,
+  //       heightUnit: heightUnit,
+  //       weightUnit: weightUnit,
+  //     ),
+  //   );
+  // }
 
   void showValidationError(String message) {
     Get.dialog(
@@ -147,7 +147,7 @@ class _HomepageState extends State<Homepage> {
         actions: [
           ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(AppColors.blueColor),
+              backgroundColor: WidgetStateProperty.all(AppColors.blueColor),
             ),
             onPressed: () {
               Get.back(); // Close the dialog
@@ -589,65 +589,65 @@ class _HomepageState extends State<Homepage> {
                   ),
 
             //Button
-            ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor:
-                      const MaterialStatePropertyAll(AppColors.blueColor),
-                  minimumSize: const MaterialStatePropertyAll(
-                    Size(300, 55),
-                  ),
-                  shape: MaterialStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                  )),
-              onPressed: () {
-                if (selectedHeightUnit == "cm" && selectedWeightUnit == "lbs") {
-                  onPressedCheckHealth(
-                      selectedGender,
-                      _ageController.text,
-                      _cmHeightController.text,
-                      _lbsWeightController.text,
-                      selectedHeightUnit,
-                      selectedWeightUnit);
-                } else if (selectedHeightUnit == "ft.in" &&
-                    selectedWeightUnit == "lbs") {
-                  onPressedCheckHealth(
-                      selectedGender,
-                      _ageController.text,
-                      "${_ftHeightController.text}.${_inHeightController.text}",
-                      _lbsWeightController.text,
-                      selectedHeightUnit,
-                      selectedWeightUnit);
-                } else if (selectedHeightUnit == "cm" &&
-                    selectedWeightUnit == "kgs") {
-                  onPressedCheckHealth(
-                      selectedGender,
-                      _ageController.text,
-                      _cmHeightController.text,
-                      _kgsWeightController.text,
-                      selectedHeightUnit,
-                      selectedWeightUnit);
-                } else if (selectedHeightUnit == "ft.in" &&
-                    selectedWeightUnit == "kgs") {
-                  onPressedCheckHealth(
-                      selectedGender,
-                      _ageController.text,
-                      "${_ftHeightController.text}.${_inHeightController.text}",
-                      _kgsWeightController.text,
-                      selectedHeightUnit,
-                      selectedWeightUnit);
-                }
-              },
-              child: Text(
-                "Check Health",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: ScreenUtil().setSp(26.0),
-                  fontFamily: 'RubikBold',
-                ),
-              ),
-            ),
+            // ElevatedButton(
+            //   style: ButtonStyle(
+            //       backgroundColor:
+            //           const WidgetStatePropertyAll(AppColors.blueColor),
+            //       minimumSize: const WidgetStatePropertyAll(
+            //         Size(300, 55),
+            //       ),
+            //       shape: WidgetStatePropertyAll(
+            //         RoundedRectangleBorder(
+            //           borderRadius: BorderRadius.circular(10.0),
+            //         ),
+            //       )),
+            //   onPressed: () {
+            //     if (selectedHeightUnit == "cm" && selectedWeightUnit == "lbs") {
+            //       onPressedCheckHealth(
+            //           selectedGender,
+            //           _ageController.text,
+            //           _cmHeightController.text,
+            //           _lbsWeightController.text,
+            //           selectedHeightUnit,
+            //           selectedWeightUnit);
+            //     } else if (selectedHeightUnit == "ft.in" &&
+            //         selectedWeightUnit == "lbs") {
+            //       onPressedCheckHealth(
+            //           selectedGender,
+            //           _ageController.text,
+            //           "${_ftHeightController.text}.${_inHeightController.text}",
+            //           _lbsWeightController.text,
+            //           selectedHeightUnit,
+            //           selectedWeightUnit);
+            //     } else if (selectedHeightUnit == "cm" &&
+            //         selectedWeightUnit == "kgs") {
+            //       onPressedCheckHealth(
+            //           selectedGender,
+            //           _ageController.text,
+            //           _cmHeightController.text,
+            //           _kgsWeightController.text,
+            //           selectedHeightUnit,
+            //           selectedWeightUnit);
+            //     } else if (selectedHeightUnit == "ft.in" &&
+            //         selectedWeightUnit == "kgs") {
+            //       onPressedCheckHealth(
+            //           selectedGender,
+            //           _ageController.text,
+            //           "${_ftHeightController.text}.${_inHeightController.text}",
+            //           _kgsWeightController.text,
+            //           selectedHeightUnit,
+            //           selectedWeightUnit);
+            //     }
+            //   },
+            //   child: Text(
+            //     "Check Health",
+            //     style: TextStyle(
+            //       color: Colors.white,
+            //       fontSize: ScreenUtil().setSp(26.0),
+            //       fontFamily: 'RubikBold',
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
