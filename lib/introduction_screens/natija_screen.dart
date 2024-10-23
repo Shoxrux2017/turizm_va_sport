@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sport_va_turizm/Screens/exercises.dart';
 
 import '../constant.dart';
 
@@ -106,7 +108,7 @@ class _NatijaScreenState extends State<NatijaScreen> {
             ),
             const SizedBox(height: 30),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Get.to(const Exercises()),
                 style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll(Colors.blue[400]),
                   shape: WidgetStateProperty.all<RoundedRectangleBorder>(

@@ -126,20 +126,17 @@ class _ResultsState extends State<Results> {
           //Button Exercise Plan
           ElevatedButton(
             style: ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll(AppColors.blueColor),
+                backgroundColor: WidgetStatePropertyAll(AppColors.blueColor),
                 minimumSize: MaterialStatePropertyAll(
                   Size(300, 55),
                 ),
-                shape: MaterialStatePropertyAll(
+                shape: WidgetStatePropertyAll(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                 )),
             onPressed: () {
-              Get.to(() => Exercises(
-                    age: widget.age,
-                    bmi: widget.bmi,
-                  ));
+              Get.to(() => Exercises());
             },
             child: Text(
               "View Exercise plan",
