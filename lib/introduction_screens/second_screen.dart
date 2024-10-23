@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sport_va_turizm/constant.dart';
 
 class SecondScreen extends StatefulWidget {
@@ -18,10 +19,30 @@ class _SecondScreenState extends State<SecondScreen> {
   TextEditingController _inHeightController = TextEditingController();
   TextEditingController _lbsWeightController = TextEditingController();
   TextEditingController _kgsWeightController = TextEditingController();
-  List<String> heightUnits = ['cm', 'ft.in'];
-  List<String> weightUnits = ['lbs', 'kgs'];
+  List<String> heightUnits = ['cm'];
+  List<String> weightUnits = ['kg'];
   String selectedHeightUnit = 'cm';
-  String selectedWeightUnit = 'lbs';
+  String selectedWeightUnit = 'kg';
+
+  Future<void> selectGenderForMale() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      selectedGender = 'male';
+    });
+
+    await prefs.setString("selectingGender", selectedGender);
+  }
+
+  Future<void> selectGenderForFeMale() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      selectedGender = 'female';
+    });
+
+    await prefs.setString("selectingGender", selectedGender);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +107,7 @@ class _SecondScreenState extends State<SecondScreen> {
                   children: [
                     //Gender
                     Text(
-                      "Gender",
+                      "Jins",
                       style: TextStyle(
                         color: AppColors.blueColor,
                         decoration: TextDecoration.none,
@@ -107,11 +128,7 @@ class _SecondScreenState extends State<SecondScreen> {
                         child: Row(
                           children: [
                             GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedGender = 'male';
-                                });
-                              },
+                              onTap: () => selectGenderForMale(),
                               child: Container(
                                 height: 52.h,
                                 width: 75.w,
@@ -134,11 +151,7 @@ class _SecondScreenState extends State<SecondScreen> {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  selectedGender = 'female';
-                                });
-                              },
+                              onTap: () => selectGenderForFeMale(),
                               child: Container(
                                 height: 52.h,
                                 width: 75.w,
@@ -171,7 +184,7 @@ class _SecondScreenState extends State<SecondScreen> {
 
                     //Age
                     Text(
-                      "Age",
+                      "Yosh",
                       style: TextStyle(
                         color: AppColors.blueColor,
                         decoration: TextDecoration.none,
@@ -198,7 +211,7 @@ class _SecondScreenState extends State<SecondScreen> {
                           decoration: InputDecoration(
                             contentPadding: EdgeInsets.only(left: 10.w),
                             border: InputBorder.none,
-                            hintText: "Age",
+                            hintText: "yosh",
                             counterText: "",
                           ),
                           controller: _ageController,
@@ -218,7 +231,7 @@ class _SecondScreenState extends State<SecondScreen> {
                     Row(
                       children: [
                         Text(
-                          "Height",
+                          "Bo'y",
                           style: TextStyle(
                             color: AppColors.blueColor,
                             decoration: TextDecoration.none,
@@ -253,106 +266,35 @@ class _SecondScreenState extends State<SecondScreen> {
                         ),
                       ],
                     ),
-                    selectedHeightUnit == "cm"
-                        ? Material(
-                            elevation: 2,
-                            borderRadius: BorderRadius.circular(10.r),
-                            child: Container(
-                              height: 52.h,
-                              width: 150.w,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  width: 0.1.w,
-                                ),
-                                borderRadius: BorderRadius.circular(10.r),
-                              ),
-                              child: TextField(
-                                onChanged: (value) {
-                                  setState(() {});
-                                },
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.only(left: 10.w),
-                                  border: InputBorder.none,
-                                  hintText: "Cm",
-                                  counterText: "",
-                                ),
-                                controller: _cmHeightController,
-                                keyboardType: TextInputType.number,
-                                maxLength: 5,
-                                maxLengthEnforcement:
-                                    MaxLengthEnforcement.enforced,
-                              ),
-                            ),
-                          )
-                        : Row(
-                            children: [
-                              Material(
-                                elevation: 2,
-                                borderRadius: BorderRadius.circular(10.r),
-                                child: Container(
-                                  height: 52.h,
-                                  width: 70.w,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 0.1.w,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.r),
-                                  ),
-                                  child: TextField(
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                    decoration: InputDecoration(
-                                      contentPadding:
-                                          EdgeInsets.only(left: 10.w),
-                                      border: InputBorder.none,
-                                      hintText: "Ft",
-                                      counterText: "",
-                                    ),
-                                    controller: _ftHeightController,
-                                    keyboardType: TextInputType.number,
-                                    maxLength: 2,
-                                    maxLengthEnforcement:
-                                        MaxLengthEnforcement.enforced,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: 10.w,
-                              ),
-                              Material(
-                                elevation: 2,
-                                borderRadius: BorderRadius.circular(10.r),
-                                child: Container(
-                                  height: 52.h,
-                                  width: 70.w,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      width: 0.1.w,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10.r),
-                                  ),
-                                  child: TextField(
-                                    onChanged: (value) {
-                                      setState(() {});
-                                    },
-                                    decoration: InputDecoration(
-                                      contentPadding:
-                                          EdgeInsets.only(left: 10.w),
-                                      border: InputBorder.none,
-                                      hintText: "In",
-                                      counterText: "",
-                                    ),
-                                    controller: _inHeightController,
-                                    keyboardType: TextInputType.number,
-                                    maxLength: 3,
-                                    maxLengthEnforcement:
-                                        MaxLengthEnforcement.enforced,
-                                  ),
-                                ),
-                              ),
-                            ],
+                    Material(
+                      elevation: 2,
+                      borderRadius: BorderRadius.circular(10.r),
+                      child: Container(
+                        height: 52.h,
+                        width: 150.w,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 0.1.w,
                           ),
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        child: TextField(
+                          onChanged: (value) {
+                            setState(() {});
+                          },
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(left: 10.w),
+                            border: InputBorder.none,
+                            hintText: "Cm",
+                            counterText: "",
+                          ),
+                          controller: _cmHeightController,
+                          keyboardType: TextInputType.number,
+                          maxLength: 5,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                        ),
+                      ),
+                    ),
 
                     //freeSPACE
                     SizedBox(
@@ -363,7 +305,7 @@ class _SecondScreenState extends State<SecondScreen> {
                     Row(
                       children: [
                         Text(
-                          "Weight",
+                          "Og'irlig",
                           style: TextStyle(
                             color: AppColors.blueColor,
                             decoration: TextDecoration.none,

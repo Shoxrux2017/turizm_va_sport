@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:sport_va_turizm/introduction_screens/fifth_screen.dart';
 import 'package:sport_va_turizm/introduction_screens/first_screen.dart';
+import 'package:sport_va_turizm/introduction_screens/fourth_screen.dart';
 import 'package:sport_va_turizm/introduction_screens/second_screen.dart';
 import 'package:sport_va_turizm/introduction_screens/third_screen.dart';
 
@@ -25,11 +27,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
               FirstScreen(),
               SecondScreen(),
               ThirdScreen(),
+              FourthScreen(),
+              FifthScreen(),
             ],
           ),
           Container(
               alignment: const Alignment(0, 0.90),
-              child: SmoothPageIndicator(controller: _controller, count: 3))
+              child: SmoothPageIndicator(controller: _controller, count: 5))
         ],
       ),
     );

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ThirdScreen extends StatefulWidget {
-  const ThirdScreen({super.key});
+class FourthScreen extends StatefulWidget {
+  const FourthScreen({super.key});
 
   @override
-  State<ThirdScreen> createState() => _ThirdScreenState();
+  State<FourthScreen> createState() => _FourthScreenState();
 }
 
-class _ThirdScreenState extends State<ThirdScreen> {
-  var answersForBoy = [7.3, 6.8, 6.2, 5.8, 5.3];
+class _FourthScreenState extends State<FourthScreen> {
+  var answersForBoy = [192, 201, 207, 213, 217];
 
-  var answersForGirl = [8.2, 7.3, 6.9, 6.4, 5.9];
+  var answersForGirl = [148, 162, 166, 171, 177];
 
   int? _selectedValue;
   String? selectedGender;
@@ -28,8 +28,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
     setState(() {
       _selectedValue = value!;
     });
-
-    await prefs.setInt('q1', _selectedValue!);
+    await prefs.setInt('q2', _selectedValue!);
   }
 
   @override
@@ -50,7 +49,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
             Column(
               children: [
                 const Text(
-                  "30 m. ga yugurish",
+                  "Turgan joyidan uzunlikka sakrash (sm) ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontSize: 24,
@@ -61,7 +60,8 @@ class _ThirdScreenState extends State<ThirdScreen> {
                 for (var i = 1; i < 6; i++)
                   selectedGender == "male"
                       ? ListTile(
-                          title: Text("${(answersForBoy[i - 1]).toString()} s"),
+                          title:
+                              Text("${(answersForBoy[i - 1]).toString()} sm"),
                           leading: Radio(
                             value: i,
                             groupValue: _selectedValue,
@@ -70,7 +70,7 @@ class _ThirdScreenState extends State<ThirdScreen> {
                         )
                       : ListTile(
                           title:
-                              Text("${(answersForGirl[i - 1]).toString()} s"),
+                              Text("${(answersForGirl[i - 1]).toString()} sm"),
                           leading: Radio(
                             value: i,
                             groupValue: _selectedValue,
