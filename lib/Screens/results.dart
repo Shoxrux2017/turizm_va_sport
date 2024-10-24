@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:sport_va_turizm/Screens/dietplan.dart';
-import 'package:sport_va_turizm/Screens/exercises.dart';
+import 'package:sport_va_turizm/Screens/homepage.dart';
 import 'package:sport_va_turizm/Widgets/calculatedBMI.dart';
 import 'package:sport_va_turizm/Widgets/commentsBMI.dart';
 import 'package:sport_va_turizm/constant.dart';
@@ -127,7 +127,7 @@ class _ResultsState extends State<Results> {
           ElevatedButton(
             style: ButtonStyle(
                 backgroundColor: WidgetStatePropertyAll(AppColors.blueColor),
-                minimumSize: MaterialStatePropertyAll(
+                minimumSize: WidgetStatePropertyAll(
                   Size(300, 55),
                 ),
                 shape: WidgetStatePropertyAll(
@@ -136,7 +136,7 @@ class _ResultsState extends State<Results> {
                   ),
                 )),
             onPressed: () {
-              Get.to(() => Exercises());
+              Get.to(() => HomePage());
             },
             child: Text(
               "View Exercise plan",

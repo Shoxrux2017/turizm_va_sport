@@ -13,16 +13,28 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
   String selectedGender = "notselected";
+  TextEditingController _nameController = TextEditingController();
   TextEditingController _ageController = TextEditingController();
   TextEditingController _cmHeightController = TextEditingController();
-  TextEditingController _ftHeightController = TextEditingController();
-  TextEditingController _inHeightController = TextEditingController();
+
   TextEditingController _lbsWeightController = TextEditingController();
   TextEditingController _kgsWeightController = TextEditingController();
   List<String> heightUnits = ['cm'];
   List<String> weightUnits = ['kg'];
   String selectedHeightUnit = 'cm';
   String selectedWeightUnit = 'kg';
+
+  String _nameOfUser = '';
+
+  Future<void> saveNameOfUser(value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      _nameOfUser = value;
+    });
+
+    await prefs.setString("nameOfUser", _nameOfUser);
+  }
 
   Future<void> selectGenderForMale() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -84,7 +96,7 @@ class _SecondScreenState extends State<SecondScreen> {
             //freeSPACE
             selectedGender == "notselected"
                 ? SizedBox(
-                    height: 134.h,
+                    height: 60.h,
                   )
                 : SizedBox(
                     height: 40.h,
@@ -105,6 +117,45 @@ class _SecondScreenState extends State<SecondScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Text(
+                      "Ism",
+                      style: TextStyle(
+                        color: AppColors.blueColor,
+                        decoration: TextDecoration.none,
+                        fontSize: ScreenUtil().setSp(24.0),
+                        fontFamily: 'RubikBold',
+                      ),
+                    ),
+                    Material(
+                      elevation: 2,
+                      borderRadius: BorderRadius.circular(10.r),
+                      child: Container(
+                        height: 52.h,
+                        width: 150.w,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            width: 0.1.w,
+                          ),
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                        child: TextField(
+                          onChanged: (value) => saveNameOfUser(value),
+                          decoration: InputDecoration(
+                            contentPadding: EdgeInsets.only(left: 10.w),
+                            border: InputBorder.none,
+                            hintText: "ism",
+                            counterText: "",
+                          ),
+                          controller: _nameController,
+                          keyboardType: TextInputType.name,
+                          maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+
                     //Gender
                     Text(
                       "Jins",
