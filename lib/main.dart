@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sport_va_turizm/Splash_Onboarding/checking_screen.dart';
-
-import 'package:sport_va_turizm/Splash_Onboarding/onboarding_screen.dart';
+import 'package:sport_va_turizm/Splash_Onboarding/welcome.dart';
 
 String? nameOfUser;
 
@@ -30,7 +28,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           useMaterial3: true,
         ),
-        home: const CheckingScreen(),
+        home: const Welcome(),
       ),
     );
   }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import 'package:sport_va_turizm/introduction_screens/fifth_screen.dart';
-import 'package:sport_va_turizm/introduction_screens/first_screen.dart';
+
 import 'package:sport_va_turizm/introduction_screens/fourth_screen.dart';
 import 'package:sport_va_turizm/introduction_screens/second_screen.dart';
 import 'package:sport_va_turizm/introduction_screens/third_screen.dart';
@@ -26,7 +26,6 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           PageView(
             controller: _controller,
             children: const [
-              FirstScreen(),
               SecondScreen(),
               ThirdScreen(),
               FourthScreen(),

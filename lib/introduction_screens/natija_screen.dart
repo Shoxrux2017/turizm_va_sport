@@ -33,16 +33,17 @@ class _NatijaScreenState extends State<NatijaScreen> {
     if (result >= 3 && result <= 5) {
       natija = "Past";
     } else if (result >= 6 && result <= 8) {
-      natija = "O'rtadan\n past";
+      natija = "O'rtadan past";
     } else if (result >= 9 && result <= 11) {
       natija = "O'rta";
     } else if (result >= 12 && result <= 13) {
-      natija = "Yuqoridan\n past";
+      natija = "Yuqoridan past";
     } else if (result >= 14 && result <= 15) {
       natija = "Yuqori";
     } else {
       natija = "Past";
     }
+    await prefs.setString('natija', natija);
     setState(() {});
   }
 

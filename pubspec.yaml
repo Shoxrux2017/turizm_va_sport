@@ -40,6 +40,9 @@ dependencies:
   get: ^4.6.6
   shared_preferences: ^2.2.2
   percent_indicator: 
+  pedometer:
+  permission_handler:
+  font_awesome_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:
@@ -64,6 +67,9 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/img/
+    - json/female/results.json
+    - json/male/results.json
 
   # To add assets to your application, add an assets section, like this:
   # assets:
