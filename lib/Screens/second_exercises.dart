@@ -39,8 +39,15 @@ class _SecondExercisesState extends State<SecondExercises> {
         titleSpacing: 10,
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text(
-          "Qadamni hisoblash dasturi",
+          "Berilgan masofaga yurish",
           style: TextStyle(color: Colors.white),
+        ),
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
       ),

@@ -373,7 +373,7 @@ class WalkingScreenState extends State<WalkingScreen> {
                       ? Icons.directions_walk
                       : _status == 'stopped'
                           ? Icons.accessibility_new
-                          : Icons.not_accessible,
+                          : Icons.do_not_step_outlined,
                   size: 100,
                 ),
                 Center(

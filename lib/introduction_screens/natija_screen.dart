@@ -23,9 +23,9 @@ class _NatijaScreenState extends State<NatijaScreen> {
   Future<void> initData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    res1 = prefs.getInt('q1')!;
-    res2 = prefs.getInt('q2')!;
-    res3 = prefs.getInt('q3')!;
+    res1 = prefs.getInt('q1') ?? 0;
+    res2 = prefs.getInt('q2') ?? 0;
+    res3 = prefs.getInt('q3') ?? 0;
 
     result = res1 + res2 + res3;
     setState(() {});
@@ -57,74 +57,36 @@ class _NatijaScreenState extends State<NatijaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.blue[100],
-        width: double.infinity,
-        height: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 100.h,
-            ),
-            Text(
-              textAlign: TextAlign.center,
-              "Natija".toUpperCase(),
-              style: const TextStyle(
-                color: AppColors.blueColor,
-                decoration: TextDecoration.none,
-                fontSize: 50,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(
-              height: 50.h,
-            ),
-            Container(
-              padding: const EdgeInsets.only(top: 30),
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.green[100],
-              ),
-              child: Column(
+          color: Colors.blue[100],
+          padding: const EdgeInsets.all(15),
+          width: double.infinity,
+          height: double.infinity,
+          child: const Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    result.toString(),
-                    style: const TextStyle(
-                        fontSize: 60,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
-                  Text(
-                    natija,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontSize: 30,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
-                  ),
+                  Text("Jis. tayyor. darajasi"),
+                  SizedBox(width: 10),
+                  Text("Yurish davomiyligi oylar kesimida"),
                 ],
               ),
-            ),
-            const SizedBox(height: 30),
-            ElevatedButton(
-                onPressed: () => Get.to(const HomePage()),
-                style: ButtonStyle(
-                  backgroundColor: WidgetStatePropertyAll(Colors.blue[400]),
-                  shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                  ),
-                ),
-                child: const Text(
-                  "Boshlash",
-                  style: TextStyle(fontSize: 50, color: Colors.black),
-                ))
-          ],
-        ),
-      ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(width: 120),
+                  Text("1-oy"),
+                  SizedBox(width: 30),
+                  Text("2-oy"),
+                  SizedBox(width: 30),
+                  Text("3-oy"),
+                  SizedBox(width: 30),
+                  Text("4-oy"),
+                ],
+              )
+            ],
+          )),
     );
   }
 }

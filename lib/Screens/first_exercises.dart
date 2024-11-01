@@ -30,7 +30,7 @@ class _FirstExercisesState extends State<FirstExercises> {
     "yuqoridan past": [12, 18, 24, 30],
     "yuqori": [16, 22, 28, 34]
   };
-  List _results = [];
+  List _results = [8, 12, 18, 24];
 
   void _initData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -68,8 +68,15 @@ class _FirstExercisesState extends State<FirstExercises> {
         titleSpacing: 10,
         backgroundColor: Theme.of(context).primaryColor,
         title: const Text(
-          "Qadamni hisoblash dasturi",
+          "4-oylik uzluksiz yurish",
           style: TextStyle(color: Colors.white),
+        ),
+        leading: IconButton(
+          onPressed: () => Get.back(),
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.white,
+          ),
         ),
         centerTitle: true,
       ),

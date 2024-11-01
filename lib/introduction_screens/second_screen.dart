@@ -72,20 +72,11 @@ class _SecondScreenState extends State<SecondScreen> {
                   style: DefaultTextStyle.of(context).style,
                   children: <TextSpan>[
                     TextSpan(
-                      text: 'Healthy',
+                      text: "Ma'lumot kiritish",
                       style: TextStyle(
                         color: AppColors.blueColor,
                         decoration: TextDecoration.none,
-                        fontSize: ScreenUtil().setSp(48.0),
-                        fontFamily: 'RubikBold',
-                      ),
-                    ),
-                    TextSpan(
-                      text: 'Hub',
-                      style: TextStyle(
-                        color: AppColors.redColor,
-                        decoration: TextDecoration.none,
-                        fontSize: ScreenUtil().setSp(48.0),
+                        fontSize: ScreenUtil().setSp(38.0),
                         fontFamily: 'RubikBold',
                       ),
                     ),
